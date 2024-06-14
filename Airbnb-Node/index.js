@@ -66,7 +66,7 @@ app.post('/createBooking', async (req,res)=>{
   // console.log(req.body.counts.selectedCountry)
   // console.log(req.body.counts.toalguests)
   // console.log(req.body.username)
-    
+
 
 
   // const adults=req.body.counts.adults

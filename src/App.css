@@ -397,9 +397,9 @@ transform: scale(1.5);
 }
 
 .card-img {
-  height: 42vh !important;
-  width: 42vh !important;
-  border-radius: 10px !important;
+  height: 42vh ;
+  width: 42vh ;
+  border-radius: 10px ;
   object-fit:cover;
 }
 .card-name{
@@ -762,8 +762,9 @@ transform: scale(1.5);
   align-items:center;
   margin: 5vh 5vh;
   padding: 0vh;
-  background: linear-gradient(to bottom, #ff002f, #f38033);
-  border-radius: 15vh;
+  background: linear-gradient(to bottom, #ff002fd3, #f38033ec);
+  border-radius: 8vh;
+  border: 2px solid black;
   transition: transform 0.3s ease;
 }
 .mybooking-container:hover{
@@ -830,12 +831,25 @@ transform: scale(1.5);
 .bookings-container{
   display: flex;
   flex-direction: row;
-  justify-content:space-evenly;
+  justify-content:flex-start;
+  align-items:center;
   flex-wrap: wrap;
 }
 
 
-
+.booking-closebtn{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  width: 95%;
+  
+  .mybooking-close-icon{
+     font-size: 3em !important;
+     color:black;
+     transition: transform 0.5s ease;
+      margin-top: 2vh;
+  }
+}
 
 
 
@@ -925,7 +939,73 @@ transform: scale(1.5);
 }
 
 
-@media (max-width: 430px)  {
+@media (max-width: 431px)  {
+
+  .centered-box-mybooking{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    
+    
+    text-align: center;
+    z-index: 2000;
+    overflow-y: auto; /* Add this to allow scrolling if content overflows */
+  }
+  .mybooking-closebtn{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    
+    .mybooking-close-icon{
+       font-size: 3em !important;
+       color:black;
+       transition: transform 0.5s ease;
+   
+    }
+  }
+  .mybooking-container{
+    height: 65vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 0vh 5vh;
+    padding: 0vh;
+    background: linear-gradient(to bottom, #ff002fd3, #f38033ec);
+    border-radius: 10vh;
+    transition: transform 0.3s ease;
+  }
+
+  .bookings-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+  }
+  .mybooking-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    height: 8vh;
+    width: 80% !important;
+    margin: 0;
+    background-color: rgb(68, 206, 252);
+    border-radius: 15vh;
+  }
+  
+  .card-img {
+    height: 60vw !important;
+    width: 60vw !important;
+    border-radius: 10px !important;
+    object-fit:cover;
+  }
   .search-icon{
     font-size: 3.5vh;
     height: 6vh;
@@ -939,10 +1019,89 @@ transform: scale(1.5);
     margin-right: 1vh;
     transition: transform 0.3s ease-in;
     position: relative;
-    left: 0px;
-    top: -350px;
+    left: 20px;
+    top: -300px;
     
   }
+  .centered-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: white;
+    border: 1px solid grey;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    
+    text-align: center;
+    z-index: 2000;
+    overflow-y: auto; /* Add this to allow scrolling if content overflows */
+  }
+
+  .booking-information{
+    background-color: rgb(186, 231, 252);
+    width: 100% !important;
+    height:200vh !important;
+    border-radius: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    margin: 2vh 1vh;
+  }
+  
+  .booking-info-1{
+    width: 100%;
+    height:200vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+    padding: 5vh;
+  
+    .booking-info-name{
+       font-weight: 500;
+       color: black;
+       margin-top: 5vh;
+       padding-bottom: 1vh;
+    }
+  }
+  
+  .booking-info-left{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    width: 90%;
+    padding: 0 !important;
+  }
+  .booking-closebtn{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    width: 80%;
+    
+    .mybooking-close-icon{
+       font-size: 3em !important;
+       color:black;
+       transition: transform 0.5s ease;
+        margin-top: 15vh;
+    }
+  }
+  
+  .booking-info-right{
+    display: flex;
+    height: 98vh;
+    margin-bottom: 23vh;
+    width:30vh;
+    flex-direction: column;
+    
+    .booking-info-close-icon{
+      font-size: 3em !important;
+      color:black;
+      transition: transform 0.5s ease;
+    }
 
   .search-input {
     width: 200px;
@@ -951,4 +1110,6 @@ transform: scale(1.5);
     left: -250px;
     top: -360px;
   }
-}
+
+  
+}}

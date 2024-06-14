@@ -89,7 +89,7 @@ return(
                                         </div>
                                     </div>
                                     <div>
-                                        <button color='red' className='mybooking-btn' onClick={(e)=>handlecancel(row.hotelid,row._id)}>Cancel Booking</button>
+                                        <button color='red' className='mybooking-btn' onClick={()=>handlecancel(row.hotelid,row._id)}>Cancel Booking</button>
                                     </div>
                                 </div>
                                 <div className='mybooking-divider'></div> {/* Divider */}

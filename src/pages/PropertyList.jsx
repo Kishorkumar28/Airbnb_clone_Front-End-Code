@@ -533,7 +533,10 @@ if(tags?.length){
 
                     <div className="centered-box">
                       <div className='booking-information'>
+                      <div className='booking-closebtn'>
                         
+                        <i className="bi bi-x-circle mybooking-close-icon" onClick={() => setSelectedProperty(null)} ></i>
+                    </div>
                           <div className='booking-info-1'>
 
                                 <div className='booking-info-left'>
@@ -571,15 +574,13 @@ if(tags?.length){
                                   </div>
                                 
                                 <div className='booking-info-right' >
-                                  <div className='booking-info-right-top'>
-                                  <i className="bi bi-x-circle booking-info-close-icon " onClick={() => setSelectedProperty(null)} ></i>
-                                  </div>
+                                  
                                   <div className='booking-info-right-bottom'>
                                   <button className='booking-button' onClick={makebooking}  >Book Now</button>
                                   </div>
                                 </div>
 
-                                </div>
+                          </div>
                         
                           </div>
                     </div>
