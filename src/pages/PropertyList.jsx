@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link,useParams } from 'react-router-dom';
 import axios from 'axios'
 import { BookingContext } from '../context/BookingContext';
-
+import { useNavigate } from "react-router-dom";
 // const properties = {
 //         america:[
 //           {
@@ -386,10 +386,13 @@ const properties2 = [
 
 
         
-function PropertyList(counts) {
+function PropertyList() {
   const { country } = useParams('/country');
   const { searchedhotel, setsearchedhotel } = useContext(BookingContext);
+  const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { tags, setTags } = useContext(BookingContext);
+  const { counts, setCounts } = useContext(BookingContext);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`/${country}}`); 
   }, [country]);
@@ -403,12 +406,10 @@ function PropertyList(counts) {
     setHotelid(property.id)
   };
   const username = localStorage.getItem("username");
+
   const makebooking= async ()=>{
-    // console.log({
-    //   hotelid,
-    //   username,
-    //   ...counts}
-    // )
+      console.log(counts,"adults")
+  if (hotelid && username && counts.adults>=0 && counts.checkindate.length && counts.checkoutdate.length && counts.children>=0 && counts.infants>=0 && counts.pets>=0 && counts.selectedCountry.length){
 
     const response = await axios.post('https://airbnb-clone-58y7.onrender.com/createBooking',{
       hotelid,
@@ -417,9 +418,40 @@ function PropertyList(counts) {
 
     })
 
-    if(!response === 'error' ){
-      alert("error occured in booking, please enter all booking details")
+    if(response.data!==null ){
+      alert("Booking created Successfully");
+      navigate("/");
+      setloginsnackbar({
+        open:true,
+        message:"Booking Successful",
+        type:"success"
+      });
+      
+      navigate("/");
     }
+    else{
+      alert("Enter all the booking details properly");
+      setloginsnackbar({
+        open:true,
+        message:"Booking Failed, Make sure to fill all details before booking",
+        type:"error"
+      });
+      
+      navigate("/");
+      
+    }
+  }
+  else{
+    alert("Enter all the booking details properly");
+    setloginsnackbar({
+      open:true,
+      message:"Booking Failed, Make sure to fill all details before booking",
+      type:"error"
+    });
+    
+    navigate("/");
+  }
+    
   }
   let filteredData=properties2;
 

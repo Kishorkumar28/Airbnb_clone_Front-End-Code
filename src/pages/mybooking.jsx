@@ -13,7 +13,6 @@ function Mybooking(){
     const prevVisibilityRef = useRef();
     const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
     const { open, setOpen } = useContext(BookingContext);
-
     const [mybookingdata,setmybookingdata]=useState([])
 
     const fetchMyBooking = async ()=>{
@@ -43,6 +42,7 @@ function Mybooking(){
                 message:"Booking Cancelled Successfully",
                 type:"success"
               })
+              
               navigate("/");
 
           }
