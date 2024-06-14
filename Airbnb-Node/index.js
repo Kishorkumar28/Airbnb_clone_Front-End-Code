@@ -54,6 +54,8 @@ app.get('/login', async (req,res)=>{
 
     
 app.post('/createBooking', async (req,res)=>{
+
+  const{adults='',checkindate='',checkoutdate='',children='',infants='',pets='',selectedCountry='',toalguests='',hotelid='',username='',isCancelled=false}=req.body
   // console.log(req.body,"creating req body")
   // console.log(req.body.hotelid)
   // console.log(req.body.counts.checkindate)
@@ -64,20 +66,20 @@ app.post('/createBooking', async (req,res)=>{
   // console.log(req.body.counts.selectedCountry)
   // console.log(req.body.counts.toalguests)
   // console.log(req.body.username)
+    console.log(req,"req iss")
 
 
-
-  const adults=req.body.counts.adults
-  const checkindate=req.body.counts.checkindate
-  const checkoutdate=req.body.counts.checkoutdate
-  const children=req.body.counts.children
-  const infants=req.body.counts.infants
-  const pets=req.body.counts.pets
-  const selectedCountry=req.body.counts.selectedCountry
-  const toalguests=req.body.counts.toalguests
-  const hotelid=req.body.hotelid
-  const username=req.body.username
-  const isCancelled=false
+  // const adults=req.body.counts.adults
+  // const checkindate=req.body.counts.checkindate
+  // const checkoutdate=req.body.counts.checkoutdate
+  // const children=req.body.counts.children
+  // const infants=req.body.counts.infants
+  // const pets=req.body.counts.pets
+  // const selectedCountry=req.body.counts.selectedCountry
+  // const toalguests=req.body.counts.toalguests
+  // const hotelid=req.body.hotelid
+  // const username=req.body.username
+  // const isCancelled=false
   const response = await BookingModel.create({
       adults,checkindate  ,checkoutdate  ,children  ,infants  ,pets  ,selectedCountry  ,toalguests  ,hotelid  ,username , isCancelled
   })

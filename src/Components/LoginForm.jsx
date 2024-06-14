@@ -54,7 +54,6 @@ const handleClose = (event, reason) => {
           }
           // Handle successful login, e.g., redirect or show a message
         } catch (error) {
-          console.error('Login failed', error);
           alert('Invalid email or password. Please try again.');
           setloginsnackbar({
             open:true,
