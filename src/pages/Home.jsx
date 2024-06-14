@@ -186,6 +186,7 @@ export default function Home() {
                                         </ul>
                             </div>
 
+
                             <div className="nav-right">
                                 <div>
                                 <button type="button" className="btn">Airbnb your home</button>
