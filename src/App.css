@@ -1,4 +1,6 @@
-
+.html{
+  font-family: "Manrope", sans-serif;
+}
 .homeParent{
   color:black;
   width:100%;
@@ -861,6 +863,8 @@ transform: scale(1.5);
 
 
 @media (max-width: 1440px)  {
+
+  
   .booking {
     display: flex !important;
     flex-direction: column !important;
@@ -945,7 +949,7 @@ transform: scale(1.5);
     width: 200px;
     font-size: 16px;
     position: relative;
-    left: -150px;
+    left: -230px;
     top: -360px;
   }
   .centered-box-mybooking{
@@ -1027,7 +1031,7 @@ transform: scale(1.5);
     transition: transform 0.3s ease-in;
     position: relative;
     left: 5px;
-    top: -300px;
+    top: 20px;
     
   }
   .centered-box {

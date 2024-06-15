@@ -92,7 +92,7 @@ Welcome to the Airbnb Clone project! This is a full-stack web application that r
    npm run dev
    ```
 
-   The frontend will be served at `http://localhost:3000` and the backend at `http://localhost:5000`.
+   [![Netlify Status](https://api.netlify.com/api/v1/badges/82dde0d3-ef19-47bb-9dd6-7b8628d29464/deploy-status)](https://app.netlify.com/sites/zingy-hotteok-afcff4/deploys)
 
 ```
 
