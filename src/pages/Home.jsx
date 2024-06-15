@@ -219,6 +219,11 @@ export default function Home() {
                                     <li><Link className="dropdown-menu-item" to="/" onClick={() => {
                                                                                                 localStorage.removeItem("username");
                                                                                                 window.location.reload();
+                                                                                                setloginsnackbar({
+                                                                                                  open:true,
+                                                                                                  message:"Logged Out successfully ",
+                                                                                                  type:"success"
+                                                                                                })
                                                                                               }}>logout</Link></li>
                                     <li><Link className="dropdown-menu-item" onClick={()=>setvisibility(!visbility)} >My Booking</Link></li>
                                     </>)}
