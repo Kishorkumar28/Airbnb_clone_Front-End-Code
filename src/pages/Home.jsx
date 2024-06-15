@@ -188,7 +188,7 @@ export default function Home() {
 
 
                             <div className="nav-right">
-                                {!username.length?(
+                                {!username?.length?(
                                   <div>
                                   <button type="button" className="btn"> Your home</button>
                                   </div>
