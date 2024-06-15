@@ -104,19 +104,11 @@ Welcome to the Airbnb Clone project! This is a full-stack web application that r
 - `POST /api/auth/login` - Login a user
 - `GET /api/auth/logout` - Logout a user
 
-### Listings
-
-- `GET /api/listings` - Get all listings
-- `GET /api/listings/:id` - Get a single listing by ID
-- `POST /api/listings` - Create a new listing
-- `PUT /api/listings/:id` - Update a listing
-- `DELETE /api/listings/:id` - Delete a listing
-
 ### Bookings
 
 - `POST /api/bookings` - Create a new booking
 - `GET /api/bookings` - Get all bookings
-- `GET /api/bookings/:id` - Get a single booking by ID
+
 
 ## Contributing
 
@@ -135,3 +127,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 Thank you for your interest in the Airbnb Clone project! If you have any questions, feel free to open an issue or contact the project maintainers.
+
+My Linkedin profile: https://www.linkedin.com/in/kishor-kumar-k-520788252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
