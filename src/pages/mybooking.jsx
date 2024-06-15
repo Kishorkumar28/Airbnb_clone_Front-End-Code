@@ -75,10 +75,10 @@ return(
                             
                             <React.Fragment  key={row._id}>
                                 <div style={{ paddingTop: "3vh" , paddingBottom: "5vh"  }} className='mybooking-container'>
-                                    <h3 style={{ paddingBottom: "2vh" }}>Property Name: {row.propertyName}</h3>
+                                    <h3 style={{ paddingBottom: "2vh" }}>Property Id: {row.hotelid}</h3>
                                     <p style={{fontWeight:500}}>Checkin Date: {row.checkindate} </p>
                                     <p style={{fontWeight:500}}>Checkout Date: {row.checkoutdate} </p>
-                                    <p style={{ paddingBottom: "3vh",fontWeight:500 }}>Selected Country: {row.country} </p>
+                                    <p style={{ paddingBottom: "3vh",fontWeight:500 }}>Selected Country: {row.selectedCountry} </p>
                                     <div className='mybooking-guests'>
                                         <h4 style={{ paddingBottom: "2vh" }}>Number of guests: {row.total} </h4>
                                         <div className='mybooking-guests'>
