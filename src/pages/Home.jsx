@@ -188,9 +188,17 @@ export default function Home() {
 
 
                             <div className="nav-right">
-                                <div>
-                                <button type="button" className="btn">Airbnb your home</button>
-                                </div>
+                                {!username.length?(
+                                  <div>
+                                  <button type="button" className="btn"> Your home</button>
+                                  </div>
+                                ):(
+                                  <div>
+                                  <button type="button" className="btn"> Hi {username}</button>
+                                  </div>
+                                )
+
+                                }
 
                                 <a href="#"><div className=" nav-right-items" ><i className="fa-solid fa-globe"></i></div></a>
 
@@ -438,7 +446,7 @@ export default function Home() {
                 </div>
                 
                 <footer>
-                <p>&copy; 2024 Airbnb clone! No rights reserved - this is a demo</p>
+                <p>&copy; 2024 Hotel Booking! No rights reserved - this is a demo</p>
                 <p>
                     Privacy · Terms · Sitemap · Company Details
                 </p>
