@@ -348,13 +348,13 @@ if(tags?.length){
                   
                   <div style={{cursor:'pointer'}}  className='cards' onClick={()=>{  handleClick(property)  }}>
                   <div className='img-container'>
-                      <img className='card-img' src={`/images/property/${property.image}`} alt={property.name}></img>
+                      <img className='card-img ' src={`/images/property/${property.image}`} alt={property.name}></img>
                   </div>
 
                   <div className='info'>
-                      <p className='card-name'>{property.name}</p>
-                      <p className='grey'>City: {property.city}</p>
-                      <p>{property.price} Per Night</p>
+                      <p className='card-name shimmer-text'>{property.name}</p>
+                      <p className='grey' style={{fontWeight:"650"}}>City: {property.city}</p>
+                      <p className='grey' style={{fontWeight:"700"}}>{property.price} Per Night</p>
                   </div>
               </div>
               {selectedProperty && (

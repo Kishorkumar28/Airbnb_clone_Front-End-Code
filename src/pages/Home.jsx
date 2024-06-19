@@ -83,7 +83,7 @@ export default function Home() {
         setCounts((prevCounts) => ({
           ...prevCounts,
           [category]: prevCounts[category] + 1,
-          toalguests:counts.adults+counts.children+counts.infants+counts.pets,
+          toalguests:counts.totalguests+1,
           checkindate:counts.checkindate,
           checkoutdate:counts.checkoutdate,
           selectedCountry:counts.selectedCountry,
@@ -98,7 +98,7 @@ export default function Home() {
         setCounts((prevCounts) => ({
           ...prevCounts,
           [category]: prevCounts[category] > 0 ? prevCounts[category] - 1 : 0,
-          toalguests:counts.adults+counts.children+counts.infants+counts.pets,
+          toalguests:counts.totalguests>0 ? counts.totalguests-1:0,
           checkindate:counts.checkindate,
           checkoutdate:counts.checkoutdate,
           selectedCountry:counts.selectedCountry,

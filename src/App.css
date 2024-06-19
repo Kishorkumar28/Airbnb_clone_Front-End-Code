@@ -417,14 +417,14 @@ transform: scale(1.5);
   margin-bottom: 3vh;
   transition: transform 0.3s ease-in;
   padding-bottom: 1vh;
-
+  padding: 5px;
 }
 
 .cards:hover{
   cursor: pointer;
   transform: scale(1.05);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-radius: 5vh;
+  border-radius: 10px;
 }
 .containers{
   display: flex !important;
@@ -876,6 +876,27 @@ transform: scale(1.5);
   }
   100% {
       background-position: 800px 0;
+  }
+}
+
+.shimmer-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  background: linear-gradient(90deg, #a7a6a6 25%, #747373 50%, #4d4c4c 75%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 10s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+      background-position: 200% center;
+  }
+  to {
+      background-position: -200% center;
   }
 }
 
