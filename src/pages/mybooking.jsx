@@ -4,7 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'; // Bootstrap Icons
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-
+import Loading from './Loading';
 
 function Mybooking(){
     const navigate=useNavigate()
@@ -14,14 +14,37 @@ function Mybooking(){
     const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
     const { open, setOpen } = useContext(BookingContext);
     const [mybookingdata,setmybookingdata]=useState([])
+    const {isLoading,setIsLoading}=useContext(BookingContext);
+    const {data,setData}=useContext(BookingContext);
 
-    const fetchMyBooking = async ()=>{
-       const response = await axios.get('https://airbnb-clone-58y7.onrender.com/mybooking?username='+username);
+    // const fetchMyBooking = async ()=>{
+    //    const response = await axios.get('https://airbnb-clone-58y7.onrender.com/mybooking?username='+username);
 
-       if(response.data!=="Error fetching data from server"){
-       setmybookingdata(response?.data)
-       }
-      }
+    //    if(response.data!=="Error fetching data from server"){
+    //    setmybookingdata(response?.data)
+    //    }
+    //   }
+
+    const fetchMyBooking = async () => {
+        setIsLoading(true); // Set loading to true when fetching data
+        try {
+            // Introduce a delay to simulate loading screen
+            setTimeout(async () => {
+                const response = await axios.get(`https://airbnb-clone-58y7.onrender.com/mybooking?username=${username}`);
+                if (response.data !== "Error fetching data from server") {
+                    setmybookingdata(response.data);
+                }
+                setIsLoading(false); // Set loading to false after fetching data
+            }, 1000); // Adjust the delay as needed (e.g., 1000ms for 1 second delay)
+        } catch (error) {
+            // console.error('Error fetching data:', error);
+            setIsLoading(false); // Ensure loading is false even if there's an error
+        }
+    };
+        
+        useEffect(() => {
+            fetchMyBooking();
+        }, [username]);
 
       useEffect(() => {
         if (prevVisibilityRef.current === false && visibility === true) {
@@ -56,52 +79,94 @@ function Mybooking(){
     }
 
 return(
-    <div >
+    // <div >
         
-        {visibility && 
+    //     {visibility && 
 
-                <div className='centered-box-mybooking'>
-                        <div className='mybooking-heading'>
-                            <h1>My Booking</h1>
-                        </div>
+    //             <div className='centered-box-mybooking'>
+    //                     <div className='mybooking-heading'>
+    //                         <h1>My Booking</h1>
+    //                     </div>
                         
-                        <div className='mybooking-closebtn'>
+    //                     <div className='mybooking-closebtn'>
                         
-                            <i className="bi bi-x-circle mybooking-close-icon" onClick={()=>setvisibility(!visibility)} ></i>
-                        </div>
-                        <div className='bookings-container'>
-                    {
-                        mybookingdata.map((row)=>(
+    //                         <i className="bi bi-x-circle mybooking-close-icon" onClick={()=>setvisibility(!visibility)} ></i>
+    //                     </div>
+    //                     <div className='bookings-container'>
+    //                 {
+    //                     mybookingdata.map((row)=>(
                             
-                            <React.Fragment  key={row._id}>
-                                <div style={{ paddingTop: "3vh" , paddingBottom: "5vh"  }} className='mybooking-container'>
+    //                         <React.Fragment  key={row._id}>
+    //                             <div style={{ paddingTop: "3vh" , paddingBottom: "5vh"  }} className='mybooking-container'>
+    //                                 <h3 style={{ paddingBottom: "2vh" }}>Property Id: {row.hotelid}</h3>
+    //                                 <p style={{fontWeight:500}}>Checkin Date: {row.checkindate} </p>
+    //                                 <p style={{fontWeight:500}}>Checkout Date: {row.checkoutdate} </p>
+    //                                 <p style={{ paddingBottom: "3vh",fontWeight:500 }}>Selected Country: {row.selectedCountry} </p>
+    //                                 <div className='mybooking-guests'>
+    //                                     <h4 style={{ paddingBottom: "2vh" }}>Number of guests: {row.total} </h4>
+    //                                     <div className='mybooking-guests'>
+    //                                         <p>Number of Adults: {row.adults} </p>
+    //                                         <p>Number of Children: {row.children} </p>
+    //                                         <p>Number of Infants: {row.infants}</p>
+    //                                         <p>Number of Pets: {row.pets} </p>
+    //                                     </div>
+    //                                 </div>
+    //                                 <div>
+    //                                     <button color='red' className='mybooking-btn' onClick={()=>handlecancel(row.hotelid,row._id)}>Cancel Booking</button>
+    //                                 </div>
+    //                             </div>
+    //                             <div className='mybooking-divider'></div> {/* Divider */}
+    //                         </React.Fragment>
+    //                     ))
+    //                 }
+    //                 </div>
+    //             </div>
+                
+                
+    //     }
+    // </div>
+
+    <div>
+            {isLoading ? (
+                <Loading /> // Show loading component when isLoading is true
+            ) : (
+                visibility && 
+                <div className='centered-box-mybooking'>
+                    <div className='mybooking-heading'>
+                        <h1>My Booking</h1>
+                    </div>
+                    
+                    <div className='mybooking-closebtn'>
+                        <i className="bi bi-x-circle mybooking-close-icon" onClick={() => setvisibility(!visibility)} ></i>
+                    </div>
+                    <div className='bookings-container'>
+                        {mybookingdata.map((row) => (
+                            <React.Fragment key={row._id}>
+                                <div style={{ paddingTop: "3vh", paddingBottom: "5vh" }} className='mybooking-container'>
                                     <h3 style={{ paddingBottom: "2vh" }}>Property Id: {row.hotelid}</h3>
-                                    <p style={{fontWeight:500}}>Checkin Date: {row.checkindate} </p>
-                                    <p style={{fontWeight:500}}>Checkout Date: {row.checkoutdate} </p>
-                                    <p style={{ paddingBottom: "3vh",fontWeight:500 }}>Selected Country: {row.selectedCountry} </p>
+                                    <p style={{ fontWeight: 500 }}>Checkin Date: {row.checkindate}</p>
+                                    <p style={{ fontWeight: 500 }}>Checkout Date: {row.checkoutdate}</p>
+                                    <p style={{ paddingBottom: "3vh", fontWeight: 500 }}>Selected Country: {row.selectedCountry}</p>
                                     <div className='mybooking-guests'>
-                                        <h4 style={{ paddingBottom: "2vh" }}>Number of guests: {row.total} </h4>
+                                        <h4 style={{ paddingBottom: "2vh" }}>Number of guests: {row.total}</h4>
                                         <div className='mybooking-guests'>
-                                            <p>Number of Adults: {row.adults} </p>
-                                            <p>Number of Children: {row.children} </p>
+                                            <p>Number of Adults: {row.adults}</p>
+                                            <p>Number of Children: {row.children}</p>
                                             <p>Number of Infants: {row.infants}</p>
-                                            <p>Number of Pets: {row.pets} </p>
+                                            <p>Number of Pets: {row.pets}</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <button color='red' className='mybooking-btn' onClick={()=>handlecancel(row.hotelid,row._id)}>Cancel Booking</button>
+                                        <button color='red' className='mybooking-btn' onClick={() => handlecancel(row.hotelid, row._id)}>Cancel Booking</button>
                                     </div>
                                 </div>
                                 <div className='mybooking-divider'></div> {/* Divider */}
                             </React.Fragment>
-                        ))
-                    }
+                        ))}
                     </div>
                 </div>
-                
-                
-        }
-    </div>
+            )}
+        </div>
 )
 }
 

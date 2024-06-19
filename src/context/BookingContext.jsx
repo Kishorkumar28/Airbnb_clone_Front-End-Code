@@ -25,6 +25,8 @@ export const BookingProvider = ({ children }) => {
     message:"",
     type:""
 });
+const [isLoading, setIsLoading] = useState(false);
+const [data, setData] = useState({});
 
 const [open, setOpen] = React.useState(false);
   // Context value containing state and any necessary functions
@@ -40,7 +42,12 @@ const [open, setOpen] = React.useState(false);
     loginsnackbar,
     setloginsnackbar,
     open,
-    setOpen
+    setOpen,
+    isLoading,
+    setIsLoading,
+    data,
+    setData
+
   };
 
   return (

@@ -5,186 +5,7 @@ import { Link,useParams } from 'react-router-dom';
 import axios from 'axios'
 import { BookingContext } from '../context/BookingContext';
 import { useNavigate } from "react-router-dom";
-// const properties = {
-//         america:[
-//           {
-//             "id": "852223931024",
-//             "name": "Sunnyvale Heights",
-//             "area": "Westchester County",
-//             "address": "6 Garth rd, Scarsdale, NY 10583",
-//             "city": "Scarsdale",
-//             "image": "9.jpg",
-//             "type": "Duplex",
-//             "floorspace": 1264,
-//             "beds": 3,
-//             "baths": 1,
-//             "price": 6950,
-//             "parking": 2,
-//             "construction": ["fireplace", "landry"],
-//             "country": "America",
-//             "filter":"duplex",
-//           },
-//           {
-//             "id": "852223931025",
-//             "name": "Studio Properties",
-//             "area": "Westchester County",
-//             "address": "6 Garth rd, Scarsdale, NY 10583",
-//             "city": "Scarsdale",
-//             "image": "11.jpg",
-//             "type": "Duplex",
-//             "floorspace": 1264,
-//             "beds": 3,
-//             "baths": 1,
-//             "price": 6950,
-//             "parking": 2,
-//             "construction": ["fireplace", "landry"],
-//             "country": "America",
-//             "filter":"amazingpools",
-            
-//           },
-//         ],
-//           canada:[{
-//             "id": "651263730501",
-//             "name": "Pinecrest Manor",
-//             "area": "Westchester County",
-//             "address": "39 Sterling ave, White Plains, NY 10606",
-//             "city": "White Plains",
-//             "image": "4.jpg",
-//             "type": "Condo",
-//             "floorspace": 768,
-//             "beds": 2,
-//             "baths": 2,
-//             "price": 4450,
-//             "parking": 1,
-//             "construction": ["elevator", "garage"],
-//             "country": "Canada",
-//             "filter":"amazingpools",
-//           },],
-//           uk:[{
-//             "id": "3511539610225",
-//             "name": "Riverside Retreat",
-//             "area": "Westchester County",
-//             "address": "62 Highland St, Eastchester, NY 10608",
-//             "city": "Eastchester",
-//             "image": "3.jpg",
-//             "type": "Single-Family",
-//             "floorspace": 1264,
-//             "beds": 4,
-//             "baths": 1,
-//             "price": 5250,
-//             "parking": 0,
-//             "construction": ["basement", "landry"],
-//             "country": "UK",
-//             "filter":"multifamily",
-//           },],
-
-//           australia:[{
-//             "id": "2511639410001",
-//             "name": "Maplewood Estates",
-//             "area": "Westchester County",
-//             "address": "33 Alden Pl, Bronxville, NY 10708",
-//             "city": "Bronxville",
-//             "image": "2.jpg",
-//             "type": "Townhouse",
-//             "floorspace": 1074,
-//             "beds": 3,
-//             "baths": 1,
-//             "price": 6650,
-//             "parking": 0,
-//             "construction": ["fireplace", "gym"],
-//             "country": "Australia",
-//             "filter":"earthhomes",
-            
-//           },],
-//           newzealand:[{
-//             "id": "2411639439991",
-//             "name": "Sunnyvale Heights",
-//             "area": "Oceanview Terrace",
-//             "address": "261 California rd, Mamaroneck, NY 10612",
-//             "city": "Mamaroneck",
-//             "image": "5.jpg",
-//             "type": "Studio",
-//             "floorspace": 700,
-//             "beds": 1,
-//             "baths": 1,
-//             "price": 6650,
-//             "parking": 1,
-//             "construction": ["landry", "gym"],
-//             "country": "New Zealand",
-//             "filter":"condo",
-//           },],
-//           germany:[
-//           {
-//             "id": "1522639490009",
-//             "name": "Willowbrook Residence",
-//             "area": "Westchester County",
-//             "address": "23 Isle Lane, New Rochelle, NY 10538",
-//             "city": "New Rochelle",
-//             "image": "6.jpg",
-//             "type": "Multi Family",
-//             "floorspace": 1630,
-//             "beds": 3,
-//             "baths": 2,
-//             "price": 3650,
-//             "parking": 3,
-//             "construction": ["basement", "fireplace"],
-//             "country": "Germany",
-//             "filter":"townhouse",
-//           },],
-//           france:[{
-//             "id": "19639490088",
-//             "name": "Highland Park Villa",
-//             "area": "Westchester County",
-//             "address": "95 Vernon ave, Scarsdale, NY 10538",
-//             "city": "Scarsdale",
-//             "image": "7.jpg",
-//             "type": "Studio",
-//             "floorspace": 1200,
-//             "beds": 1,
-//             "baths": 1,
-//             "price": 2150,
-//             "parking": 3,
-//             "construction": ["elevator", "garage"],
-//             "country": "France",
-//             "filter":"singlefamily",
-//           },],
-//           italy:[{
-//             "id": "1122459390065",
-//             "name": "Cedar Grove Cottage",
-//             "area": "Westchester County",
-//             "address": "321 Munday Lane, Eastchester, NY 10606",
-//             "city": "Eastchester",
-//             "image": "8.jpg",
-//             "type": "Multi Family",
-//             "floorspace": 2100,
-//             "beds": 3,
-//             "baths": 1,
-//             "price": 8450,
-//             "parking": 3,
-//             "construction": ["basement", "pool"],
-//             "country": "Italy",
-//             "filter":"luxe",
-//           },],
-
-//           japan:[{
-//             "id": "1722679430009",
-//             "name": "Lakeside Lodge",
-//             "area": "Westchester County",
-//             "address": "123 Ducksworth Way, New Rochelle, NY 10535",
-//             "city": "New Rochelle",
-//             "image": "1.jpg",
-//             "type": "Single Family",
-//             "floorspace": 2300,
-//             "beds": 2,
-//             "baths": 1,
-//             "price": 6500,
-//             "parking": 3,
-//             "construction": ["garage", "landry"],
-//             "country": "Japan",
-//             "filter":"beachfront",
-//           }],
-  
-//         }
+import Loading from './Loading';
 
 const properties2 = [
           
@@ -399,6 +220,8 @@ function PropertyList() {
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [rating, setRating] = useState(0);
+  const {isLoading,setIsLoading}=useContext(BookingContext);
+    const {data,setData}=useContext(BookingContext);
   
   const handleClick = (property) => {
     setSelectedProperty(property);
@@ -408,39 +231,44 @@ function PropertyList() {
   const username = localStorage.getItem("username");
 
   const makebooking= async ()=>{
-      console.log(counts,"adults")
-  if (hotelid && username && counts.adults>=0 && counts.checkindate.length && counts.checkoutdate.length && counts.children>=0 && counts.infants>=0 && counts.pets>=0 && counts.selectedCountry.length){
+      // console.log(counts,"adults")
+      if (hotelid && username && counts.adults>=0 && counts.checkindate.length && counts.checkoutdate.length && counts.children>=0 && counts.infants>=0 && counts.pets>=0 && counts.selectedCountry.length){
+        setIsLoading(true);
+        try{
+        setTimeout(async () => {
+        const response = await axios.post('https://airbnb-clone-58y7.onrender.com/createBooking',{
+          hotelid,
+          username,
+          ...counts,
 
-    const response = await axios.post('https://airbnb-clone-58y7.onrender.com/createBooking',{
-      hotelid,
-      username,
-      ...counts,
+        })
 
-    })
-
-    if(response.data!==null ){
-      alert("Booking created Successfully");
-      navigate("/");
-      setloginsnackbar({
-        open:true,
-        message:"Booking Successful",
-        type:"success"
-      });
-      
-      navigate("/");
-    }
-    else{
-      alert("Enter all the booking details properly");
-      setloginsnackbar({
-        open:true,
-        message:"Booking Failed, Make sure to fill all details before booking",
-        type:"error"
-      });
-      
-      navigate("/");
-      
-    }
-  }
+        if(response.data!==null ){
+          alert("Booking created Successfully");
+          navigate("/");
+          setloginsnackbar({
+            open:true,
+            message:"Booking Successful",
+            type:"success"
+          });
+          
+          navigate("/");
+        }
+        setIsLoading(false); // Set loading to false after fetching data
+            }, 1000);
+          }
+        catch{
+          alert("Enter all the booking details properly");
+          setloginsnackbar({
+            open:true,
+            message:"Booking Failed, Make sure to fill all details before booking",
+            type:"error"
+          });
+          
+          navigate("/");
+          
+        }
+      }
   else{
     alert("Enter all the booking details properly");
     setloginsnackbar({
