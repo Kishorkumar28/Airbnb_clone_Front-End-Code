@@ -33,6 +33,7 @@ export default function Home() {
   const { tags, setTags } = useContext(BookingContext);
   const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { open, setOpen } = useContext(BookingContext);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -250,6 +251,8 @@ export default function Home() {
                           id="combo-box-demo"
                           options={countries}
                           getOptionLabel={(option) => option.label}
+                          isOptionEqualToValue={(option, value) => option.label === value.label}
+                            value={selectedCountry}
                           sx={{
                             width: 200,
                             '& .MuiOutlinedInput-root': {
