@@ -213,9 +213,12 @@ function PropertyList() {
   const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { tags, setTags } = useContext(BookingContext);
   const { counts, setCounts } = useContext(BookingContext);
+  const baseUrl = "/";
+  const url = country ? `${baseUrl}${country}` : baseUrl;
   const navigate = useNavigate();
+  
   useEffect(() => {
-    fetch(`/${country}}`); 
+    fetch(url); 
   }, [country]);
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
