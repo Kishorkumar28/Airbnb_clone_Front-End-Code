@@ -269,7 +269,7 @@ export default function Home() {
                           onSelect={(e)=>{
                             const country=e.target.value;
                             setCounts({...counts,selectedCountry:country})
-                            country && navigate(`/${country.toLowerCase()}`)
+                            country && navigate(`/${country?.toLowerCase()}`)
                             
                           }}
                           />}

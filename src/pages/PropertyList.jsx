@@ -213,12 +213,9 @@ function PropertyList() {
   const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { tags, setTags } = useContext(BookingContext);
   const { counts, setCounts } = useContext(BookingContext);
-  const baseUrl = "/";
-  const url = country ? `${baseUrl}${country}` : baseUrl;
   const navigate = useNavigate();
-  
   useEffect(() => {
-    fetch(url); 
+    fetch(`/${country}}`); 
   }, [country]);
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -344,7 +341,7 @@ if(tags?.length){
     <div className="containers">
       {filteredData
         .filter(property => 
-          (!country || (property.country.toLowerCase() === country.toLowerCase())) 
+          (!country || (property.country.toLowerCase().includes(country.toLowerCase()))) 
         )
         ?.map((property) => (
                 <div  key={property.id}  >
