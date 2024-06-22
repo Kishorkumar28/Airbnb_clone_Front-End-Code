@@ -143,18 +143,21 @@ return(
                         {mybookingdata.map((row) => (
                             <React.Fragment key={row._id}>
                                 <div style={{ paddingTop: "3vh", paddingBottom: "5vh" }} className='mybooking-container'>
-                                    <h3 style={{ paddingBottom: "2vh" }}>Property Id: {row.hotelid}</h3>
-                                    <p style={{ fontWeight: 500 }}>Checkin Date: {row.checkindate}</p>
-                                    <p style={{ fontWeight: 500 }}>Checkout Date: {row.checkoutdate}</p>
-                                    <p style={{ paddingBottom: "3vh", fontWeight: 500 }}>Selected Country: {row.selectedCountry}</p>
+                                        <div className='mybooking-dates'>
+                                        
+                                        <h3 style={{ paddingBottom: "2vh" }}>Property Id: {row.hotelid}</h3>
+                                        <p style={{ paddingBottom: "3vh", fontWeight: 500 }}>Selected Country: {row.selectedCountry}</p>
+                                        <p style={{ fontWeight: 500 }}>Checkin Date: {row.checkindate}</p>
+                                        <p style={{ fontWeight: 500 }}>Checkout Date: {row.checkoutdate}</p>
+                                        </div>
+                                    
                                     <div className='mybooking-guests'>
                                         <h4 style={{ paddingBottom: "2vh" }}>Number of guests: {row.total}</h4>
-                                        <div className='mybooking-guests'>
-                                            <p>Number of Adults: {row.adults}</p>
+                                        <p>Number of Adults: {row.adults}</p>
                                             <p>Number of Children: {row.children}</p>
                                             <p>Number of Infants: {row.infants}</p>
                                             <p>Number of Pets: {row.pets}</p>
-                                        </div>
+                                        
                                     </div>
                                     <div>
                                         <button color='red' className='mybooking-btn' onClick={() => handlecancel(row.hotelid, row._id)}>Cancel Booking</button>

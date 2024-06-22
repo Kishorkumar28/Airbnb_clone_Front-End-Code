@@ -207,31 +207,32 @@ const properties2 = [
 
         
 function PropertyList() {
-  const { country } = useParams('/country');
+  // const { country } = useParams('/country');
   const { searchedhotel, setsearchedhotel } = useContext(BookingContext);
   const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { tags, setTags } = useContext(BookingContext);
   const { counts, setCounts } = useContext(BookingContext);
   const navigate = useNavigate();
+    const { filteredCountry, setfilteredCountry } = useContext(BookingContext);
   // useEffect(() => {
   //   fetch(`/${country}`); 
   // }, [country]);
 
-  useEffect(() => {
+//   useEffect(() => {
     
-    const fetchData = async () => {
-      if (country && country.length > 0) {
-        try {
-            const response = await fetch(`/${country}`);
+//     const fetchData = async () => {
+//       if (country && country.length > 0) {
+//         try {
+//              fetch(`/${country}`);
             
-            // Handle your data here
-        } catch{
-          // Add error handling
-        }
-      }
-    };
-    fetchData();
-}, [country]);
+//             // Handle your data here
+//         } catch{
+//           // Add error handling
+//         }
+//       }
+//     };
+//     fetchData();
+// }, [country]);
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [rating, setRating] = useState(0);
@@ -356,7 +357,7 @@ if(tags?.length){
     <div className="containers">
       {filteredData
         .filter(property => 
-          (!country || (property.country.toLowerCase().includes(country.toLowerCase()))) 
+          (!filteredCountry || (property.country.toLowerCase().includes(filteredCountry?.toLowerCase()))) 
         )
         ?.map((property) => (
                 <div  key={property.id}  >
@@ -385,7 +386,7 @@ if(tags?.length){
                                 <div className='booking-info-left'>
                                     <img className='card-img' src={`/images/property/${selectedProperty.image}`}></img>
                                     <h2 className='booking-info-name'>Property : {selectedProperty.name}</h2>
-                                    <p style={{fontWeight:500}}>Address : {selectedProperty.address}, {selectedProperty.country}</p>
+                                    <p style={{fontWeight:500}}>Address : {selectedProperty.address}, {selectedProperty.filteredCountry}</p>
                                     <p style={{fontWeight:500}}>City : {selectedProperty.city}</p>
                                     <p style={{fontWeight:500}}>Type : {selectedProperty.type}</p>
                                     <p style={{fontWeight:500}}>Parking : {selectedProperty.parking} </p>

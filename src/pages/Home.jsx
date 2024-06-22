@@ -33,6 +33,7 @@ export default function Home() {
   const { tags, setTags } = useContext(BookingContext);
   const { loginsnackbar, setloginsnackbar } = useContext(BookingContext);
   const { open, setOpen } = useContext(BookingContext);
+  const { filteredCountry, setfilteredCountry } = useContext(BookingContext);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -78,33 +79,85 @@ export default function Home() {
       
     // }
 
-      const incrementCount = (category, e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setCounts((prevCounts) => ({
-          ...prevCounts,
-          [category]: prevCounts[category] + 1,
-          toalguests:counts.totalguests+1,
-          checkindate:counts.checkindate,
-          checkoutdate:counts.checkoutdate,
-          selectedCountry:counts.selectedCountry,
-        }
+    //   const incrementCount = (category, e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     setCounts((prevCounts) => ({
+    //       ...prevCounts,
+    //       [category]: prevCounts[category] + 1,
+    //       toalguests:counts.adults+counts.pets+counts.children,
+    //       checkindate:counts.checkindate,
+    //       checkoutdate:counts.checkoutdate,
+    //       selectedCountry:counts.selectedCountry,
+    //     }
     
-    ));
-      };
+    // ));
+    //   };
+
+    const incrementCount = (category, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCounts((prevCounts) => {
+        // Calculate the updated count for the specified category
+        const updatedCategoryCount = prevCounts[category] + 1;
+
+        // Create a new state object with the updated category count
+        const updatedCounts = {
+            ...prevCounts,
+            [category]: updatedCategoryCount,
+        };
+
+        // Calculate the total guests based on the updated counts for adults, pets, and children
+        updatedCounts.toalguests = updatedCounts.adults + updatedCounts.pets + updatedCounts.children;
+
+        // Update other properties from the previous state
+        updatedCounts.checkindate = prevCounts.checkindate;
+        updatedCounts.checkoutdate = prevCounts.checkoutdate;
+        updatedCounts.selectedCountry = prevCounts.selectedCountry;
+
+        // Return the updated state object
+        return updatedCounts;
+    });
+};
       
+      // const decrementCount = (category, e) => {
+      //   e.preventDefault();
+      //   e.stopPropagation();
+      //   setCounts((prevCounts) => ({
+      //     ...prevCounts,
+      //     [category]: prevCounts[category] > 0 ? prevCounts[category] - 1 : 0,
+      //     toalguests:counts.adults+counts.pets+counts.children,
+      //     checkindate:counts.checkindate,
+      //     checkoutdate:counts.checkoutdate,
+      //     selectedCountry:counts.selectedCountry,
+      //   }));
+      // };
+
       const decrementCount = (category, e) => {
         e.preventDefault();
         e.stopPropagation();
-        setCounts((prevCounts) => ({
-          ...prevCounts,
-          [category]: prevCounts[category] > 0 ? prevCounts[category] - 1 : 0,
-          toalguests:counts.totalguests>0 ? counts.totalguests-1:0,
-          checkindate:counts.checkindate,
-          checkoutdate:counts.checkoutdate,
-          selectedCountry:counts.selectedCountry,
-        }));
-      };
+        setCounts((prevCounts) => {
+            // Calculate the updated count for the specified category
+            const updatedCategoryCount = prevCounts[category] > 0 ? prevCounts[category] - 1 : 0;
+    
+            // Create a new state object with the updated category count
+            const updatedCounts = {
+                ...prevCounts,
+                [category]: updatedCategoryCount,
+            };
+    
+            // Calculate the total guests based on the updated counts for adults, pets, and children
+            updatedCounts.toalguests = updatedCounts.adults + updatedCounts.pets + updatedCounts.children;
+    
+            // Update other properties from the previous state
+            updatedCounts.checkindate = prevCounts.checkindate;
+            updatedCounts.checkoutdate = prevCounts.checkoutdate;
+            updatedCounts.selectedCountry = prevCounts.selectedCountry;
+    
+            // Return the updated state object
+            return updatedCounts;
+        });
+    };
       
     const scroll = (direction) => {
       const scrollAmount = 250; // Adjust as needed
@@ -268,8 +321,8 @@ export default function Home() {
                           renderInput={(params) => <TextField {...params} label='Country' 
                           onSelect={(e)=>{
                             const country=e.target.value;
-                            setCounts({...counts,selectedCountry:country})
-                            country && navigate(`/${country?.toLowerCase()}`)
+                            setCounts({...counts,selectedCountry:country});
+                            setfilteredCountry(country);
                             
                           }}
                           />}

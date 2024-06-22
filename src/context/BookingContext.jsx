@@ -29,6 +29,8 @@ const [isLoading, setIsLoading] = useState(false);
 const [data, setData] = useState({});
 
 const [open, setOpen] = React.useState(false);
+
+const [filteredCountry,setfilteredCountry]=useState("")
   // Context value containing state and any necessary functions
   const contextValue = {
     counts,
@@ -46,8 +48,9 @@ const [open, setOpen] = React.useState(false);
     isLoading,
     setIsLoading,
     data,
-    setData
-
+    setData,
+    filteredCountry,
+    setfilteredCountry
   };
 
   return (
