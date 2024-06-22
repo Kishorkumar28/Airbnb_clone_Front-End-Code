@@ -223,13 +223,10 @@ function PropertyList() {
       if (country && country.length > 0) {
         try {
             const response = await fetch(`/${country}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
             
             // Handle your data here
-        } catch (error) {
-            console.error('Fetch error:', error);
+        } catch{
+          // Add error handling
         }
       }
     };
