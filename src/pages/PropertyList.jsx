@@ -215,7 +215,7 @@ function PropertyList() {
   const { counts, setCounts } = useContext(BookingContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`/${country}}`); 
+    fetch(`/${country}`); 
   }, [country]);
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
