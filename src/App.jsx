@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import './App.css'
 import axios from "axios"
 import { useState } from "react";
-
+import PropertyList from "./pages/PropertyList"
 function App() {
 
   return (
@@ -18,6 +18,7 @@ function App() {
           <Route path="/:country" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          {/* <Route path="/country/:country" element={<PropertyList />} /> */}
         </Routes>
       </Router>
     

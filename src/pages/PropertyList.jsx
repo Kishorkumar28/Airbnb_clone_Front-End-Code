@@ -1,4 +1,4 @@
-import {React,useEffect,useState,useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 // import PropertyCard from './property_component';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link,useParams } from 'react-router-dom';
@@ -205,7 +205,6 @@ const properties2 = [
 ]
 
 
-
         
 function PropertyList() {
   const { country } = useParams('/country');
@@ -214,9 +213,28 @@ function PropertyList() {
   const { tags, setTags } = useContext(BookingContext);
   const { counts, setCounts } = useContext(BookingContext);
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   fetch(`/${country}`); 
+  // }, [country]);
+
   useEffect(() => {
-    fetch(`/${country}`); 
-  }, [country]);
+    
+    const fetchData = async () => {
+      if (country && country.length > 0) {
+        try {
+            const response = await fetch(`/${country}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            // Handle your data here
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+      }
+    };
+    fetchData();
+}, [country]);
   const [hotelid,setHotelid]=useState("")
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [rating, setRating] = useState(0);
