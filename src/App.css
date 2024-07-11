@@ -762,16 +762,16 @@ transform: scale(1.5);
 }
 
 .mybooking-container{
-  height: 30vh;
-  width: 60vw;
+  height: 35vh;
+  width: 65vw;
   display: flex;
   flex-direction: row;
   align-items:flex-start;
   justify-content: space-between;
   padding: 0vh;
-  background: linear-gradient(165deg, #E0E0E0, #FFFFFF);
+  background: linear-gradient(15deg, #E0E0E0, #FFFFFF);
   border-radius: 7vh;
-  border: 2px solid black;
+  border: 8px solid black;
   transition: transform 0.3s ease;
   padding: 5vh;
 }
@@ -816,7 +816,7 @@ transform: scale(1.5);
 .mybooking-btn{
   height: 8vh;
   width: 20vh;
-  border-radius: 15vh;
+  border-radius: 2.5vh !important;
   font-size: 15px;
   border: 0;
   background-color: #ff002f;

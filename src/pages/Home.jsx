@@ -192,6 +192,7 @@ export default function Home() {
 
       const gotohome=()=>{
         navigate('/');
+        location.reload();
         setTags([])
     }
     // console.log(counts,"booking state");
